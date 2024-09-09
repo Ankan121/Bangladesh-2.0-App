@@ -46,12 +46,6 @@ class _Home_ScreenState extends State<Home_Screen> {
                 ),
               ),
             ),
-            // const DrawerHeader(
-            //   decoration: BoxDecoration(
-            //     color: Color(0xff008000),
-            //   ),
-            //   child: Text('Drawer Header'),
-            // ),
             SizedBox(height: 20,),
             Drawer_Title(
               titlename: 'Did',
