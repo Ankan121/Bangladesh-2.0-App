@@ -7,6 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../navigation_bar/navigation_bar.dart';
+
 class Splash_Screen extends StatefulWidget {
   const Splash_Screen({super.key});
 
@@ -17,7 +19,7 @@ class Splash_Screen extends StatefulWidget {
 class _Splash_ScreenState extends State<Splash_Screen> {
   void initState(){
     Timer(Duration(seconds: 2), () {
-      Get.to<Home_Screen>(Home_Screen());
+      Get.to<Home_Screen>(Navigation_Var());
     });
 
     super.initState();
