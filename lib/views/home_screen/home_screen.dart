@@ -2,7 +2,8 @@ import 'package:bangladesh_2point0/constants/colors.dart';
 import 'package:bangladesh_2point0/global_widgets/drawer_title.dart';
 import 'package:bangladesh_2point0/global_widgets/profile_details.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../global_widgets/carousel_slider.dart';
 
 
 class Home_Screen extends StatefulWidget {
@@ -19,11 +20,11 @@ class _Home_ScreenState extends State<Home_Screen> {
       backgroundColor: AppColor.appbar,
       appBar: AppBar(
         backgroundColor: AppColor.appbar,
-        title: Text("Home Page",style: TextStyle(color: Colors.white),),
+        title: Text("Home Page",style: TextStyle(fontSize: 30, color: Colors.white),),
         iconTheme: IconThemeData(color: Colors.white),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: () {  }, icon: Icon(Icons.search,color: Colors.white,),),
+          IconButton(onPressed: () {  }, icon: Icon(Icons.search,color: Colors.white,size: 30,),),
         ],
       ),
       drawer: Drawer(
@@ -55,6 +56,35 @@ class _Home_ScreenState extends State<Home_Screen> {
             SizedBox(height: 40,),
             Drawer_Title(titlename: "Add Data 2.0"),
           ],
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 40,),
+              Container(
+                height: 800,
+                width: 450,
+                decoration: BoxDecoration(
+                  color: AppColor.bodycolor,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(30),
+                    topLeft: Radius.circular(30),
+                  )
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(height: 30,),
+                    Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Carousel_Slider(),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
