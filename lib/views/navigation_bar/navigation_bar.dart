@@ -27,45 +27,6 @@ class _MyHomePageState extends State<Navigation_Var> {
     return Scaffold(
       body: _screens[_currentIndex],
       bottomNavigationBar:
-      // ClipRRect(
-      // borderRadius: BorderRadius.only(
-      // topLeft: Radius.circular(30.0),
-      // topRight: Radius.circular(30.0),
-      //           ),
-      //   child: ClipRRect(
-      //     borderRadius: const BorderRadius.only(
-      //       topRight: Radius.circular(30),
-      //       topLeft: Radius.circular(30),
-      //     ),
-      //         child: BottomNavigationBar(
-      //           type: BottomNavigationBarType.shifting, // Shifting
-      //           selectedItemColor: Colors.white,
-      //           unselectedItemColor: Colors.grey,
-      //           items: [
-      //             BottomNavigationBarItem(
-      //               icon: Icon(Icons.home_outlined),
-      //               label: 'Home',
-      //               backgroundColor: Colors.cyan, // <-- This works for shifting
-      //             ),
-      //             BottomNavigationBarItem(
-      //               icon: Icon(Icons.list_alt),
-      //               label: 'List',
-      //               backgroundColor: Colors.green, // <-- This works for shifting
-      //             ),
-      //             BottomNavigationBarItem(
-      //               icon: Icon(Icons.playlist_add),
-      //               label: 'Add List',
-      //               backgroundColor: Colors.green, // <-- This works for shifting
-      //             ),
-      //             BottomNavigationBarItem(
-      //               icon: Icon(Icons.person),
-      //               label: 'Profile',
-      //               backgroundColor: Colors.green, // <-- This works for shifting
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      // ),
       ClipRRect(
         borderRadius: const BorderRadius.only(
           topRight: Radius.circular(24),
@@ -102,14 +63,6 @@ class _MyHomePageState extends State<Navigation_Var> {
               label: 'Profile',
             ),
           ],
-          // selectedItemColor: Color(0xff33907C),
-          // unselectedItemColor: Colors.black,
-          // selectedLabelStyle: TextStyle(
-          //   color: Colors.deepOrange,
-          // ),
-          // unselectedLabelStyle: TextStyle(
-          //     color: Colors.redAccent
-          // ),
         ),
       ),
     );
