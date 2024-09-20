@@ -85,7 +85,7 @@ class _MyHomePageState extends State<Navigation_Var> {
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
               label: 'Home',
-              backgroundColor: Colors.blue,
+              backgroundColor: AppColor.appbar,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.list_alt),

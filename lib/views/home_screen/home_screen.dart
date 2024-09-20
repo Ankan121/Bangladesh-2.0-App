@@ -74,12 +74,14 @@ class _Home_ScreenState extends State<Home_Screen> {
                   )
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 30,),
                     Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: Carousel_Slider(),
                     ),
+                    Text('News'),
                   ],
                 ),
               ),
