@@ -94,8 +94,8 @@ class _Profile_ScreenState extends State<Profile_Screen> {
                     ),
                     Positioned(
                       top: -80.r, // Adjust top value to prevent overflow
-                      left: 120.r,
-                        //left: MediaQuery.of(context).size.width / 2 - 100.r,
+                      //left: 120.r,
+                        left: MediaQuery.of(context).size.width / 2 - 80.r,
                       child: Container(
                         //alignment: Alignment.center,
                         width: 150.0, // CircleAvatar এর ব্যাসার্ধের জন্য দ্বিগুণ আকার
