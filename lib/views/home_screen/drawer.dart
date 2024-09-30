@@ -1,9 +1,14 @@
+import 'package:bangladesh_2point0/model/diedlistmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../../constants/colors.dart';
 import '../../global_widgets/drawer_title.dart';
 import '../../global_widgets/profile_details.dart';
+import 'died_list.dart';
+import 'died_list_view.dart';
 
 class Drawer_Screen extends StatefulWidget {
   const Drawer_Screen({super.key});
@@ -37,12 +42,11 @@ class _Drawer_ScreenState extends State<Drawer_Screen> {
           ),
           SizedBox(height: 20,),
           Drawer_Title(
-            titlename: 'Did',
-          ),
-          SizedBox(height: 40,),
-          Drawer_Title(titlename: "Died List 2.0"),
+            titlename: 'Died List 2.0',),
           SizedBox(height: 40,),
           Drawer_Title(titlename: "Add Data 2.0"),
+          SizedBox(height: 40,),
+          Drawer_Title(titlename: "Profile"),
         ],
       ),
     );
