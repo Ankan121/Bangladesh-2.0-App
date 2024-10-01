@@ -18,7 +18,7 @@ class Home_Controller extends GetxController{
       'img' : 'assets/splash/rounded 4.jpeg',
       'name' : 'Abu Sayeed',
       'Died' : 'July 16, 2024',
-      'description' : 'All Details Abu Sayeed Text all Detiails',
+      'description' : 'All Details Abu Sayeed Text all Detiails so dont wory they that so try again',
     },
     {
       'img' : 'assets/splash/rounded 4.jpeg',

@@ -29,7 +29,7 @@ class _Died_ListState extends State<Died_List> {
   Widget build(BuildContext context) {
 
     final TextStyle? largeblack = TextFormate(colors: Colors.black).textLargeFormate(context);
-    final TextStyle? mediumblack = TextFormate(colors: Colors.black).textMediumFormate(context);
+    final TextStyle? mediumblack = TextFormate(colors: Colors.grey[600]).textMediumFormate(context);
     final TextStyle? smallblack = TextFormate(colors: Colors.black).textSmallFormate(context);
 
     final TextStyle? largewhite = TextFormate(colors: Colors.white).textLargeFormate(context);
@@ -49,6 +49,9 @@ class _Died_ListState extends State<Died_List> {
 
             DiedList? diedListmodel = homcon.diedlistmodelresponse[index];
 
+            String? titletext = '${diedListmodel.description}';
+            String? firstLetter = titletext.substring(0,15);
+
             return Padding(
               padding: const EdgeInsets.all(15.0).r,
               child: InkWell(
@@ -60,40 +63,51 @@ class _Died_ListState extends State<Died_List> {
                 child: Card(
                   color: Colors.white,
                   elevation: 5,
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 110.h,
-                        width: 100.w,
-                        decoration: BoxDecoration(
-                          //border: Border.all(color: Color(0xff008000)),
-                          borderRadius: BorderRadius.circular(10.r),
-                          image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: AssetImage('${diedListmodel.img}'),
-                              )),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(12.0),
+                          child: Image.asset('${diedListmodel.img}',
+                            height: 90,
+                            width: 90,
+                            fit: BoxFit.cover,),
                         ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0).r,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('${diedListmodel.name}',style: largeblack, maxLines: 1, overflow: TextOverflow.ellipsis,),
-                            Text('${diedListmodel.died}',style: mediumblack, maxLines: 1, overflow: TextOverflow.ellipsis,),
-                            Text('${diedListmodel.name}',style: mediumblack, maxLines: 1, overflow: TextOverflow.ellipsis,),
-                            // Spacer(),
-                            Text('${diedListmodel.name}',style: mediumblack,maxLines: 1, overflow: TextOverflow.ellipsis,),
-                          ],
+                        // Container(
+                        //   height: 110.h,
+                        //   width: 100.w,
+                        //   decoration: BoxDecoration(
+                        //     //border: Border.all(color: Color(0xff008000)),
+                        //     borderRadius: BorderRadius.circular(10.r),
+                        //     image: DecorationImage(
+                        //         fit: BoxFit.fill,
+                        //         image: AssetImage('${diedListmodel.img}'),
+                        //         )),
+                        //   ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0).r,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('${diedListmodel.name}',style: largeblack, maxLines: 1, overflow: TextOverflow.ellipsis,),
+                              Text('${diedListmodel.died}',style: mediumblack, maxLines: 1, overflow: TextOverflow.ellipsis,),
+                              Text('${firstLetter}',style: mediumblack, maxLines: 1, overflow: TextOverflow.ellipsis,),
+                              // Spacer(),
+                              // Text('${diedListmodel.description}',style: mediumblack,maxLines: 1, overflow: TextOverflow.ellipsis,),
+                            ],
+                          ),
                         ),
-                      ),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.end,
-                      //   crossAxisAlignment: CrossAxisAlignment.end,
-                      //   children: [
-                      //     Text('View All',style:context.textTheme.titleSmall?.copyWith(color: Color(0xff008000),),),
-                      //   ],
-                      // ),
-                    ],
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.end,
+                        //   crossAxisAlignment: CrossAxisAlignment.end,
+                        //   children: [
+                        //     Text('View All',style:context.textTheme.titleSmall?.copyWith(color: Color(0xff008000),),),
+                        //   ],
+                        // ),
+                      ],
+                    ),
                   ),
                 ),
               ),
