@@ -1,5 +1,6 @@
 import 'package:bangladesh_2point0/constants/colors.dart';
 import 'package:bangladesh_2point0/controller/home_controller.dart';
+import 'package:bangladesh_2point0/db_service/db_helper.dart';
 import 'package:bangladesh_2point0/views/home_screen/died_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +18,36 @@ class Died_List extends StatefulWidget {
 }
 
 class _Died_ListState extends State<Died_List> {
+  //Local Database er jonno
+  List diedItems = [];
 
   @override
   void initState(){
+    //Local Database Items
+    setState(() {
+      diedItems = [];
+    });
+
+    //Local Database Items
+    readItemsDatabase();
+
+    //Home Controller Json/api data
     Get.find<Home_Controller>().setdiedlistmodel();
     super.initState();
   }
+
+  //Local Database er jonno
+  Future<void> readItemsDatabase()async{
+    setState(() {
+      diedItems = [];
+    });
+    final diedAllItems = await DbHelper().readdiedItems();
+    print(diedAllItems);
+    setState(() {
+      diedItems.addAll(diedAllItems);
+    });
+  }
+
 
 
   @override
@@ -42,7 +67,10 @@ class _Died_ListState extends State<Died_List> {
         return ListView.builder(
           physics: NeverScrollableScrollPhysics(), // Disable ListView's own scrolling
           shrinkWrap: true, // Make the ListView take only as much space as needed
+          //Home Controller Json/api data
           itemCount: homcon.diedlistmodelresponse.length, // Number of items
+          //Local Database er jonno
+          //itemCount: diedItems.length, // Number of items
           itemBuilder: (context, index) {
             print(homcon.diedlistmodelresponse[index]);
             print('all done');
@@ -87,23 +115,6 @@ class _Died_ListState extends State<Died_List> {
                                     style: TextStyle(fontSize: 16, color: Colors.white),
                                   ),
                                 ),),
-
-                      //   Image.asset('${diedListmodel.img}',
-                        //     height: 90,
-                        //     width: 90,
-                        //     fit: BoxFit.cover,),
-                        // ),
-                        // Container(
-                        //   height: 110.h,
-                        //   width: 100.w,
-                        //   decoration: BoxDecoration(
-                        //     //border: Border.all(color: Color(0xff008000)),
-                        //     borderRadius: BorderRadius.circular(10.r),
-                        //     image: DecorationImage(
-                        //         fit: BoxFit.fill,
-                        //         image: AssetImage('${diedListmodel.img}'),
-                        //         )),
-                        //   ),
                         Padding(
                           padding: const EdgeInsets.all(8.0).r,
                           child: Column(

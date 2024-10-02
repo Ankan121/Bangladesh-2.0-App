@@ -34,4 +34,11 @@ class DbHelper{
     var snackBar = const SnackBar(content: Text('Your Items Request Added successfully '));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
+
+  //Local Database All Data Red
+  Future<dynamic> readdiedItems()async{
+    Database? db = await database;
+    final list = db?.query('DiedList');
+    return list;
+  }
 }
