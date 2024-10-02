@@ -1,4 +1,5 @@
 import 'package:bangladesh_2point0/constants/colors.dart';
+import 'package:bangladesh_2point0/db_service/db_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -16,27 +17,9 @@ class Add_List_Screen extends StatefulWidget {
 
 class _Add_List_ScreenState extends State<Add_List_Screen> {
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // A key for managing the form
-  String _fast_name = ''; // Variable to store the entered name
-  String _last_name = '';
-  String _email = ''; // Variable to store the entered email
-  String _passwored = '';
-  String _re_password = '';
-
-  void _submitForm() {
-    // Check if the form is valid
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      //Get.to(ApplyScreen());
-      print('Name: $_fast_name'); // Print the name
-      print('Mobile Number: $_last_name'); // Print the email
-      print("Email ID/Phone Number: $_email" );
-      print("Password: $_passwored");
-      print("Re-enter Password: $_re_password");
-    }
-  }
-
-
+  final titleEditingController = TextEditingController();
+  final died_dateEditingController = TextEditingController();
+  final descriptionEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,136 +65,112 @@ class _Add_List_ScreenState extends State<Add_List_Screen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
 
-                          Form(
-                            key: _formKey, // Associate the form key with this Form widget
-                            child: Padding(
-                              padding: EdgeInsets.all(0.0).r,
-                              child: SingleChildScrollView(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(20.0).r,
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0).r,
-                                        child: Text("Title",style: largeblack,),
+                          Padding(
+                            padding: EdgeInsets.all(0.0).r,
+                            child: SingleChildScrollView(
+                              child: Padding(
+                                padding: const EdgeInsets.all(20.0).r,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0).r,
+                                      child: Text("Title",style: largeblack,),
+                                    ),
+                                    Container(
+                                      child: TextFormField(
+                                        controller: titleEditingController,
+                                        decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.black),
+                                            borderRadius: BorderRadius.circular(40.r),
+                                          ),
+
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(40.r),
+                                          ),
+                                          labelText: "Enter Title",
+                                          labelStyle: TextStyle(
+                                              color: Colors.black
+                                          ),
+                                        ), // Label for the name field
                                       ),
-                                      Container(
-                                        child: TextFormField(
-                                          decoration: InputDecoration(
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(color: Colors.black),
-                                              borderRadius: BorderRadius.circular(40.r),
-                                            ),
+                                    ),
 
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius.circular(40.r),
-                                            ),
-                                            labelText: "Enter Title",
-                                            labelStyle: TextStyle(
-                                                color: Colors.black
-                                            ),
+                                    SizedBox(height: 20.h,),
 
-                                          ), // Label for the name field
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              return 'Please enter your Fast Name.'; // Return an error message if the name is empty
-                                            }
-                                            return null; // Return null if the name is valid
-                                          },
-                                          onSaved: (value) {
-                                            _fast_name = value!; // Save the entered name
-                                          },
-                                        ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0).r,
+                                      child: Text("Died Date",style: largeblack),
+                                    ),
+                                    Container(
+                                      child: TextFormField(
+                                        controller: died_dateEditingController,
+                                        decoration: InputDecoration(
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.black),
+                                            borderRadius: BorderRadius.circular(40.r),
+                                          ),
+
+                                          border: OutlineInputBorder(
+                                            borderRadius: BorderRadius.circular(40.r),
+                                          ),
+                                          labelText: "Died Date",
+                                          labelStyle: TextStyle(
+                                              color: Colors.black,
+                                          ),
+                                        ), // Label for the name field
                                       ),
+                                    ),
 
-                                      SizedBox(height: 20.h,),
+                                    SizedBox(height: 20.0.h),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0).r,
+                                      child: Text("Description",style: largeblack),
+                                    ),
+                                    Container(
+                                      child: TextFormField(
+                                        controller: descriptionEditingController,
+                                        decoration: InputDecoration(
+                                          contentPadding: EdgeInsets.symmetric(vertical: 60.0.h, horizontal: 10.0.w),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.black),
+                                           //borderRadius: BorderRadius.circular(40.r),
+                                          ),
 
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0).r,
-                                        child: Text("Died Date",style: largeblack),
+                                          border: OutlineInputBorder(
+                                            //borderRadius: BorderRadius.circular(40.r),
+                                          ),
+                                          labelText: "Enter Description",
+                                          labelStyle: TextStyle(
+                                              color: Colors.black
+                                          ),
+                                        ), // Label for the name field
                                       ),
-                                      Container(
-                                        child: TextFormField(
-                                          decoration: InputDecoration(
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(color: Colors.black),
-                                              borderRadius: BorderRadius.circular(40.r),
-                                            ),
+                                    ),
 
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius.circular(40.r),
-                                            ),
-                                            labelText: "Died Date",
-                                            labelStyle: TextStyle(
-                                                color: Colors.black,
-                                            ),
-
-                                          ), // Label for the name field
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              return 'Please enter your Fast Name.'; // Return an error message if the name is empty
-                                            }
-                                            return null; // Return null if the name is valid
-                                          },
-                                          onSaved: (value) {
-                                            _fast_name = value!; // Save the entered name
-                                          },
-                                        ),
+                                    SizedBox(height: 30.0.h),
+                                    Center(
+                                      child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            //backgroundColor: AppColor.whiteall,
+                                            shadowColor: Colors.greenAccent,
+                                            elevation: 3,
+                                            fixedSize: Size(306.w, 48.h), // specify width, height
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(20.r,))),
+                                        onPressed: () async{
+                                          if(titleEditingController.text.isEmpty || died_dateEditingController.text.isEmpty || died_dateEditingController.text.isEmpty){
+                                            var snackBar = const SnackBar(content: Text('Please All field are required !'));
+                                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                          }else{
+                                            await DbHelper().addnote(context, titleEditingController.text, died_dateEditingController.text, descriptionEditingController.text);
+                                          }
+                                        },
+                                        child: Text('Add',style: context.textTheme.titleLarge?.copyWith(color: AppColor.appbar)), // Text on the button
                                       ),
-
-                                      SizedBox(height: 20.0.h),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0).r,
-                                        child: Text("Description",style: largeblack),
-                                      ),
-                                      Container(
-                                        child: TextFormField(
-                                          decoration: InputDecoration(
-                                            contentPadding: EdgeInsets.symmetric(vertical: 60.0.h, horizontal: 10.0.w),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(color: Colors.black),
-                                             //borderRadius: BorderRadius.circular(40.r),
-                                            ),
-
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius.circular(40.r),
-                                            ),
-                                            labelText: "Enter Description",
-                                            labelStyle: TextStyle(
-                                                color: Colors.black
-                                            ),
-
-                                          ), // Label for the name field
-                                          validator: (value) {
-                                            if (value!.isEmpty) {
-                                              return 'Please enter your Fast Name.'; // Return an error message if the name is empty
-                                            }
-                                            return null; // Return null if the name is valid
-                                          },
-                                          onSaved: (value) {
-                                            _fast_name = value!; // Save the entered name
-                                          },
-                                        ),
-                                      ),
-
-                                      SizedBox(height: 30.0.h),
-                                      Center(
-                                        child: ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                              //backgroundColor: AppColor.whiteall,
-                                              shadowColor: Colors.greenAccent,
-                                              elevation: 3,
-                                              fixedSize: Size(306.w, 48.h), // specify width, height
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(20.r,))),
-                                          onPressed: () {},
-                                          //_submitForm, // Call the _submitForm function when the button is pressed
-                                          child: Text('Add',style: context.textTheme.titleLarge?.copyWith(color: AppColor.appbar)), // Text on the button
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
