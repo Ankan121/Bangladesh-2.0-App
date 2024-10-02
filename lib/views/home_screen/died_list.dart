@@ -70,11 +70,29 @@ class _Died_ListState extends State<Died_List> {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(12.0),
-                          child: Image.asset('${diedListmodel.img}',
+                          child:diedListmodel.img != null && diedListmodel.img!.isNotEmpty
+                              ? Image.asset(
+                            '${diedListmodel.img}',
                             height: 90,
                             width: 90,
-                            fit: BoxFit.cover,),
-                        ),
+                            fit: BoxFit.cover,
+                          )
+                              : Container(
+                                  height: 90,
+                                  width: 90,
+                                  alignment: Alignment.center,
+                                  color: Colors.grey, // Optional: Background color for the placeholder
+                                      child: const Text(
+                                    'No Image',
+                                    style: TextStyle(fontSize: 16, color: Colors.white),
+                                  ),
+                                ),),
+
+                      //   Image.asset('${diedListmodel.img}',
+                        //     height: 90,
+                        //     width: 90,
+                        //     fit: BoxFit.cover,),
+                        // ),
                         // Container(
                         //   height: 110.h,
                         //   width: 100.w,
