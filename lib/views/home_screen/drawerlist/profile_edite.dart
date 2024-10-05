@@ -38,7 +38,7 @@ class _ProfileEditeState extends State<ProfileEdite> {
       appBar: AppBar(
         backgroundColor: AppColor.appbar,
         leading: IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.arrow_back, color: Colors.white,)),
-        title: Text('Profile',style: largewhite,),
+        title: Text('Profile Edite',style: largewhite,),
         centerTitle: true,
         
       
@@ -87,11 +87,6 @@ class _ProfileEditeState extends State<ProfileEdite> {
                                 Divider(color: Colors.black12,thickness: 1,),
                                 Spacer(),
                                 Text('Raipura, Narsingdi',style: largeblack),
-                                Divider(color: Colors.black12,thickness: 1,),
-                                Spacer(),
-                                TextButton(onPressed: (){
-                                  //Get.to(ApplyScreen());
-                                }, child: Text('Logout',style: largeblack)),
 
                               ],),
                           ),
@@ -128,16 +123,40 @@ class _ProfileEditeState extends State<ProfileEdite> {
                         )
 
                     ),
+
                     Positioned(
                         left: 225,
-                        child: IconButton(onPressed: (){},
-                            iconSize: 40,
-                            icon: Icon(Icons.camera,color: AppColor.appbar,)))
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black.withOpacity(0.1), // Background color
+                            borderRadius: BorderRadius.circular(100), // Rounded corners
+                          ),
+                          child: IconButton(onPressed: (){},
+                              iconSize: 40,
+                              icon: Icon(Icons.camera,color: AppColor.appbar,)),
+                        )),
+
                   ],
                 ),
               )
 
             ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child: Center(
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              //backgroundColor: AppColor.whiteall,
+                shadowColor: Colors.greenAccent,
+                elevation: 3,
+                fixedSize: Size(200.w, 48.h), // specify width, height
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.r,))),
+            onPressed: () async{},
+            child: Text('Save',style: context.textTheme.titleLarge?.copyWith(color: AppColor.appbar)), // Text on the button
           ),
         ),
       ),
