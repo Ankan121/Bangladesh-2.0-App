@@ -1,14 +1,16 @@
-import 'package:bangladesh_2point0/model/diedlistmodel.dart';
+
+import 'package:bangladesh_2point0/views/home_screen/drawerlist/profile_edite.dart';
+import 'package:bangladesh_2point0/views/list_screen/list_screen.dart';
+import 'package:bangladesh_2point0/views/profile_screen/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../../constants/colors.dart';
 import '../../global_widgets/drawer_title.dart';
 import '../../global_widgets/profile_details.dart';
-import 'died_list.dart';
-import 'died_list_view.dart';
+import '../navigation_bar/navigation_bar.dart';
+
 
 class Drawer_Screen extends StatefulWidget {
   const Drawer_Screen({super.key});
@@ -41,12 +43,27 @@ class _Drawer_ScreenState extends State<Drawer_Screen> {
             ),
           ),
           SizedBox(height: 20,),
+          // Drawer Page Navivatorn var Navigate
+          // Drawer_Title(
+          //   titlename: 'Died List 2.0',
+          //   onTap: ()  {
+          //     Navigation_Var.navKey.currentState?.setState(() {
+          //       Navigation_Var.navKey.currentState?.currentIndex = 1; // `Add List` ট্যাবে নেভিগেট করতে `index = 1`
+          //     });
+          //     Get.offAll(Navigation_Var());
+          //   },
+          // ),
+
+
           Drawer_Title(
-            titlename: 'Died List 2.0',),
-          SizedBox(height: 40,),
-          Drawer_Title(titlename: "Add Data 2.0"),
-          SizedBox(height: 40,),
-          Drawer_Title(titlename: "Profile"),
+            titlename: 'Profile Edite',
+              icon: Icon(Icons.edit,color: Colors.white,),
+            onTap: (){Get.to(ProfileEdite());}
+          ),
+
+          Drawer_Title(titlename: "Setting",icon: Icon(Icons.settings,color: Colors.white,),),
+
+          Drawer_Title(titlename: "Help & Feedback",icon: Icon(Icons.feedback_outlined,color: Colors.white,),),
         ],
       ),
     );

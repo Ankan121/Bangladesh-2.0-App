@@ -9,6 +9,8 @@ import 'package:get/get.dart';
 
 import '../../constants/text.dart';
 import '../../global_widgets/carousel_slider.dart';
+import '../list_screen/list_screen.dart';
+import '../navigation_bar/navigation_bar.dart';
 
 
 class Home_Screen extends StatefulWidget {
@@ -38,13 +40,15 @@ class _Home_ScreenState extends State<Home_Screen> {
       appBar: AppBar(
         backgroundColor: AppColor.appbar,
         title: Text("Home Page",style: largewhite,),
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
-        actions: [
-          IconButton(onPressed: () {  }, icon: Icon(Icons.search,color: Colors.white,size: 30,),),
-        ],
+        // actions: [
+        //   IconButton(onPressed: () {
+        //
+        //     }, icon: const Icon(Icons.search,color: Colors.white,size: 30,),),
+        // ],
       ),
-      drawer: Drawer_Screen(),
+      drawer: const Drawer_Screen(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -53,11 +57,11 @@ class _Home_ScreenState extends State<Home_Screen> {
               Container(
                 width: 450.w,
                 decoration: BoxDecoration(
-                  color: AppColor.bodycolor,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(30.r),
-                    topLeft: Radius.circular(30.r),
-                  )
+                    color: AppColor.bodycolor,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(30.r),
+                      topLeft: Radius.circular(30.r),
+                    )
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,13 +69,13 @@ class _Home_ScreenState extends State<Home_Screen> {
                     SizedBox(height: 30.h,),
                     Padding(
                       padding: const EdgeInsets.all(2.0).r,
-                      child: Carousel_Slider(),
+                      child: const Carousel_Slider(),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15.0).r,
                       child: Text('News',style: largeblack,),
                     ),
-                    Died_List(),
+                    const Died_List(),
                   ],
                 ),
               ),

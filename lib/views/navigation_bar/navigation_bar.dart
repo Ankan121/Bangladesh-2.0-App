@@ -8,12 +8,16 @@ import '../home_screen/home_screen.dart';
 
 
 class Navigation_Var extends StatefulWidget {
+
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<Navigation_Var> {
-  int _currentIndex = 0;
+
+  int currentIndex = 0;
+
   final List<Widget> _screens = [
     Home_Screen(),
     List_Screen(),
@@ -25,7 +29,7 @@ class _MyHomePageState extends State<Navigation_Var> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_currentIndex],
+      body: _screens[currentIndex],
       bottomNavigationBar:
       ClipRRect(
         borderRadius: const BorderRadius.only(
@@ -33,10 +37,10 @@ class _MyHomePageState extends State<Navigation_Var> {
           topLeft: Radius.circular(24),
         ),
         child: BottomNavigationBar(
-          currentIndex: _currentIndex,
+          currentIndex: currentIndex,
           onTap: (index) {
             setState(() {
-              _currentIndex = index;
+              currentIndex = index;
             });
           },
           type: BottomNavigationBarType.shifting, // Shifting

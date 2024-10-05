@@ -67,10 +67,8 @@ class _Died_ListState extends State<Died_List> {
         return ListView.builder(
           physics: NeverScrollableScrollPhysics(), // Disable ListView's own scrolling
           shrinkWrap: true, // Make the ListView take only as much space as needed
-          //Home Controller Json/api data
-          itemCount: homcon.diedlistmodelresponse.length, // Number of items
-          //Local Database er jonno
-          //itemCount: diedItems.length, // Number of items
+          itemCount: homcon.diedlistmodelresponse.length, //Home Controller Json/api data
+          //itemCount: diedItems.length, //Local Database er jonno
           itemBuilder: (context, index) {
             print(homcon.diedlistmodelresponse[index]);
             print('all done');
